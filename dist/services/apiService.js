@@ -2,9 +2,9 @@ import { NetworkError, DataError } from '../utils/errorHandler.js';
 //  fetch('https://dummyjson.com/test')
 //         .then(res => res.json())
 //         .then(console.log);
-export async function fetchProducts() {
+export async function fetchProducts(id) {
     try {
-        const response = await fetch('https://dummyjson.com/products/16');
+        const response = await fetch(`https://dummyjson.com/products/${id}`);
         if (!response.ok) {
             throw new NetworkError(`Network error: ${response.status}`);
         }

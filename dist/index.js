@@ -5,7 +5,7 @@ import { calculateDiscount } from "./utils/discountCalculator.js";
 import { calculateTax } from "./utils/taxCalculator.js";
 async function main() {
     try {
-        const data = await fetchProducts();
+        const data = await fetchProducts(16);
         if (data) {
             const product = new Product(data);
             product.displayDetails();
