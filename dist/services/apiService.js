@@ -1,4 +1,4 @@
-import { NetworkError, DataError } from '../utils/errorHandler.js';
+import { NetworkError, DataError } from '../util/errorHandler.js';
 //  fetch('https://dummyjson.com/test')
 //         .then(res => res.json())
 //         .then(console.log);

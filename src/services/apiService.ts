@@ -1,5 +1,5 @@
 
-import { NetworkError, DataError } from '../utils/errorHandler.js'
+import { NetworkError, DataError } from '../util/errorHandler.js'
 
 
 interface ItemDetails {

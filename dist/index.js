@@ -1,16 +1,19 @@
-import { NetworkError, DataError } from './utils/errorHandler.js';
+import { NetworkError, DataError } from './util/errorHandler.js';
 import { Product } from "./models/Product.js";
 import { fetchProducts } from "./services/apiService.js";
-import { calculateDiscount } from "./utils/discountCalculator.js";
-import { calculateTax } from "./utils/taxCalculator.js";
+import { calculateDiscount } from "./util/discountCalculator.js";
+import { calculateTax } from "./util/taxCalculator.js";
 async function main() {
     try {
         const data = await fetchProducts(16);
         if (data) {
             const product = new Product(data);
             product.displayDetails();
-            console.log(`Price with discount: $${calculateDiscount(product.price, product.discountPercentage)}`);
-            console.log(`Price after Tax: $${calculateTax(product.price, product.category)}`);
+            const discountRes = calculateDiscount(product.price, product.discountPercentage);
+            const taxCalc = calculateTax(discountRes, product.category);
+            const finalPrice = discountRes + taxCalc;
+            console.log(`Price with discount: $${discountRes}`);
+            console.log(`Price after Tax: $${finalPrice.toFixed(2)}`);
         }
     }
     catch (e) {
